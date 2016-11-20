@@ -1,0 +1,21 @@
+!contents -R2 -g -p -f -h
+
+!**> Scenarios
+
+|scenario | Modify computer |
+|start browser | chrome | on url | http://computer-database.herokuapp.com/ |
+|ensure|do|open|on|/computers/500|
+| ensure | do | type | on | id=name | with | AN/FSQ-79|
+| ensure | do | select | on | id=company | with | label=Netronics |
+| ensure | do | clickAndWait | on | css=input.btn.primary |
+| check | is | verifyText | on | css=div.alert-message.warning | Done! Computer AN/FSQ-79 has been updated|
+| $Total= | is | storeText | on | css=#main > h1 |
+| check | is | verifyText | on |css=#main > h1 |$Total|
+
+
+
+**!
+
+
+| script |
+|Modify computer |

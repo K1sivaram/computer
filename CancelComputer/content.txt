@@ -1,0 +1,32 @@
+!contents -R2 -g -p -f -h
+
+!**> Scenarios
+
+|scenario | Add computer |
+|start browser | chrome | on url | http://computer-database.herokuapp.com/ |
+|ensure|do|open|on|/computers|
+|ensure|do|pause|on|1000|
+| ensure | do | clickAndWait | on | id=add |
+| ensure | do | type | on | id=name | with | AMK|
+| ensure | do | select | on | id=company | with | label=Thinking Machines |
+| ensure | do | clickAndWait | on | css=input.btn.primary |
+
+
+|scenario | Delete computer |
+| do | open | on | /computers?f=AMK |
+| ensure | do | clickAndWait | on | id=searchsubmit |
+| ensure | do | clickAndWait | on | link=AMK |
+|ensure|do|pause|on|1000|
+|ensure | do | clickAndWait | on | css=input.btn.danger |
+|check | is | verifyText | on | css=div.alert-message.warning | Done! Computer has been deleted |
+|$Total= | is | storeText | on | css=#main > h1 |
+|check | is | verifyText | on |css=#main > h1 |$Total|
+
+
+
+**!
+
+
+| script |
+|Add Computer|
+|Delete computer |

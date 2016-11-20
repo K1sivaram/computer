@@ -1,0 +1,24 @@
+!contents -R2 -g -p -f -h
+
+!**> Scenarios
+
+|scenario | enter new computer |
+| start browser | chrome | on url | http://computer-database.herokuapp.com/ |
+| do | open | on | /computers |
+|ensure|do|pause|on|1000|
+| ensure | do | clickAndWait | on | id=add |
+|ensure|do|pause|on|5000|
+| ensure | do | type | on | id=name | with | XYZ |
+| ensure | do | select | on | id=company | with | label=Thinking Machines |
+| ensure | do | clickAndWait | on | css=input.btn.primary |
+| check | is | verifyText | on | css=div.alert-message.warning | Done! Computer XYZ has been created |
+| $Total= | is | storeText | on | css=#main > h1 |
+| check | is | verifyText | on |css=#main > h1 |$Total|
+
+
+
+**!
+
+
+| script |
+|enter new computer |
